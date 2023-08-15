@@ -6,7 +6,7 @@ RUN groupadd -r -g 11211 memcache && useradd -r -g memcache -u 11211 memcache
 ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
-    && wget -O memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
+    && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
     && mkdir -p /usr/src/memcached \
     && tar -xzf memcached.tar.gz -C /usr/src/memcached --strip-components=1 \
     && rm memcached.tar.gz \
