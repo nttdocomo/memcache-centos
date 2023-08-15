@@ -6,8 +6,7 @@ RUN groupadd -r -g 11211 memcache && useradd -r -g memcache -u 11211 memcache
 ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
-    && yum --nogpg install -y epel-release \
-    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-devel \
+    && yum --nogpg install -y zlib-devel \
 	&& curl -o openssl-1.1.1g.tar.gz "https://www.openssl.org/source/openssl-1.1.1g.tar.gz" \
 	&& mkdir -p /usr/src/openssl-1.1.1 \
 	&& tar -xzf openssl-1.1.1g.tar.gz -C /usr/src/openssl-1.1.1 --strip-components=1 \
@@ -17,6 +16,8 @@ RUN set -x \
 	&& make \
 	&& make install \
 	&& cd / && rm -rf /usr/src/openssl-1.1.1 \
+    && yum --nogpg install -y epel-release \
+    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-devel \
     && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
     && mkdir -p /usr/src/memcached \
     && tar -xzf memcached.tar.gz -C /usr/src/memcached --strip-components=1 \
