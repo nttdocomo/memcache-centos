@@ -7,7 +7,7 @@ ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
     && yum --nogpg install -y epel-release \
-    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel \
+    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-dev \
     && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
     && mkdir -p /usr/src/memcached \
     && tar -xzf memcached.tar.gz -C /usr/src/memcached --strip-components=1 \
