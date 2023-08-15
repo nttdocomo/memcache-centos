@@ -6,7 +6,9 @@ RUN groupadd -r -g 11211 memcache && useradd -r -g memcache -u 11211 memcache
 ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
-    && yum --nogpg install -y zlib-devel \
+	# install build dependencies for openssl
+    && yum --nogpg install -y perl* zlib-devel \
+	&& perl -v \
 	&& curl -o openssl-1.1.1g.tar.gz "https://www.openssl.org/source/openssl-1.1.1g.tar.gz" \
 	&& mkdir -p /usr/src/openssl-1.1.1 \
 	&& tar -xzf openssl-1.1.1g.tar.gz -C /usr/src/openssl-1.1.1 --strip-components=1 \
