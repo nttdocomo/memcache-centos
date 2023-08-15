@@ -7,7 +7,7 @@ ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
 	# install build dependencies for openssl
-    && yum --nogpg install -y perl* zlib-devel \
+    && yum --nogpg install -y perl* zlib-devel gcc \
 	&& perl -v \
 	&& curl -o openssl-1.1.1g.tar.gz "https://www.openssl.org/source/openssl-1.1.1g.tar.gz" \
 	&& mkdir -p /usr/src/openssl-1.1.1 \
