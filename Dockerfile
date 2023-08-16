@@ -26,7 +26,7 @@ RUN set -x \
     && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
     && mkdir -p /usr/src/memcached \
     && tar -xzf memcached.tar.gz -C /usr/src/memcached --strip-components=1 \
-    && rm memcached.tar.gz \
+    && rm -rf memcached.tar.gz \
     && cd /usr/src/memcached \
     && gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
     && enableExtstore="$( \
@@ -53,6 +53,7 @@ RUN set -x \
 	\
 	&& make install \
 	\
-	&& cd / && rm -rf /usr/src/memcached
+	&& cd / && rm -rf /usr/src/memcached \
+	&& yum autoremove -y dpkg-dev cyrus-sasl-devel libevent-devel epel-release
 
 # CMD ["memcached"]
