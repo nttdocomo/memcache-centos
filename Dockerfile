@@ -19,8 +19,8 @@ RUN set -x \
 	&& make install \
 	&& openssl version \
 	&& cd / && rm -rf /usr/src/openssl-1.1.1 \
-	&& export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64 \
-	&& echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64" >> ~/.bashrc \
+	# && export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64 \
+	# && echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64" >> ~/.bashrc \
     && yum --nogpg install -y epel-release \
     && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-devel \
     && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
@@ -42,6 +42,7 @@ RUN set -x \
 		--enable-sasl \
 		--enable-sasl-pwdb \
 		--enable-tls \
+		--with-libssl=/lib/ \
 		$enableExtstore \
 	&& nproc="$(nproc)" \
 	&& make -j "$nproc" \
