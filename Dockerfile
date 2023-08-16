@@ -41,8 +41,6 @@ RUN set -x \
 		--build="$gnuArch" \
 		--enable-sasl \
 		--enable-sasl-pwdb \
-		--enable-tls \
-		--with-libssl=/lib/ \
 		$enableExtstore \
 	&& nproc="$(nproc)" \
 	&& make -j "$nproc" \
