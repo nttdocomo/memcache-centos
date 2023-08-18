@@ -22,7 +22,7 @@ RUN set -x \
 	# && export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64 \
 	# && echo "export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64" >> ~/.bashrc \
     && yum --nogpg install -y epel-release \
-    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-devel openssl \
+    && yum --nogpg install -y dpkg-dev cyrus-sasl-devel libevent-devel openssl11 openssl11-devel \
     && curl -o memcached.tar.gz "https://memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz" \
     && mkdir -p /usr/src/memcached \
     && tar -xzf memcached.tar.gz -C /usr/src/memcached --strip-components=1 \
