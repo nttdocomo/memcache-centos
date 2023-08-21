@@ -52,6 +52,6 @@ RUN set -x \
 	&& make install \
 	\
 	&& cd / && rm -rf /usr/src/memcached \
-	&& yum autoremove -y perl* zlib-devel gcc dpkg-dev cyrus-sasl-devel libevent-devel epel-release
+	&& yum autoremove -y perl*
 
 # CMD ["memcached"]
