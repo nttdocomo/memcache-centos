@@ -52,6 +52,6 @@ RUN set -x \
 	&& make install \
 	\
 	&& cd / && rm -rf /usr/src/memcached \
-	&& yum autoremove -y perl*
+	&& yum autoremove -y perl* zlib-devel
 
 # CMD ["memcached"]
