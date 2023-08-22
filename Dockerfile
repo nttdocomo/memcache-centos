@@ -7,7 +7,7 @@ ENV MEMCACHED_VERSION 1.6.9
 
 RUN set -x \
 	# install build dependencies for openssl
-    && yum --nogpg install -y perl* zlib-devel gcc \
+    && yum --nogpg install -y perl zlib-devel gcc \
 	&& perl -v \
 	&& curl -o openssl-1.1.1g.tar.gz "https://www.openssl.org/source/openssl-1.1.1g.tar.gz" \
 	&& mkdir -p /usr/src/openssl-1.1.1 \
@@ -52,6 +52,6 @@ RUN set -x \
 	&& make install \
 	\
 	&& cd / && rm -rf /usr/src/memcached \
-	&& yum autoremove -y perl* zlib-devel gcc dpkg-dev cyrus-sasl-devel
+	&& yum autoremove -y perl zlib-devel gcc dpkg-dev
 
 # CMD ["memcached"]
